@@ -2,11 +2,12 @@ const fs = require('fs');
 const path = require('path');
 const { Liga, Equipo, Jugador, Eliminacion, Partido } = require('../model/modelo');
 
-function obtenerArchivosCSV(){
+// Función principal para obtener archivos TXT
+function obtenerArchivosTXT(){
   try {
     const carpetaTest = path.join(__dirname, '../../Test');
     const archivos = fs.readdirSync(carpetaTest);
-    return archivos.filter(archivo => archivo.endsWith('.csv'));
+    return archivos.filter(archivo => archivo.endsWith('.txt'));
   } catch (error) {
     console.log('Error: No se pudo leer la carpeta Test:', error.message);
     return [];
@@ -37,8 +38,10 @@ function parseEquiposSection(lineas) {
     } else if (linea.includes('jugador:') && equipoActual) {
       const nombreJugador = linea.match(/"([^"]+)"/)[1];
       const posicion = linea.match(/posicion: "([^"]+)"/)[1];
-      const dorsal = parseInt(linea.match(/Dorsal: (\d+)/)[1]);
-      const edad = parseInt(linea.match(/Edad: (\d+)/)[1]);
+      // Manejar tanto 'Dorsal' como 'numero' 
+      const dorsalMatch = linea.match(/(?:Dorsal|numero): (\d+)/);
+      const dorsal = dorsalMatch ? parseInt(dorsalMatch[1]) : 0;
+      const edad = parseInt(linea.match(/edad: (\d+)/)[1]);
       const jugador = new Jugador(nombreJugador, posicion, dorsal, edad);
       equipoActual.agregarJugador(jugador);
     }
@@ -53,12 +56,16 @@ function parseEliminacionSection(lineas) {
   for (const linea of lineas) {
     if (linea.includes('cuartos:')) {
       faseActual = 'cuartos';
-    } else if (linea.includes('semifinales:')) {
+    } else if (linea.includes('semifinales:') || linea.includes('semifinal:')) {
       faseActual = 'semifinales';
     } else if (linea.includes('final:')) {
       faseActual = 'final';
     } else if (linea.includes('partido:') && faseActual) {
-      const partidoInfo = linea.match(/"([^"]+) vs ([^"]+)"/);
+      // Manejar ambos formatos: "equipo1 vs equipo2" y "equipo1" vs "equipo2"
+      let partidoInfo = linea.match(/"([^"]+) vs ([^"]+)"/);
+      if (!partidoInfo) {
+        partidoInfo = linea.match(/"([^"]+)" vs "([^"]+)"/);
+      }
       if (partidoInfo) {
         const equipo1 = new Equipo(partidoInfo[1]);
         const equipo2 = new Equipo(partidoInfo[2]);
@@ -73,7 +80,8 @@ function parseEliminacionSection(lineas) {
       const goleador = new Jugador(nombreGoleador, '', '', '');
       partidoActual.agregarGoleador(goleador, minuto);
     }
-    if (linea.includes('],') && partidoActual && faseActual) {
+    // Detectar fin de partido
+    if ((linea.includes('],') || linea.includes('}')) && partidoActual && faseActual) {
       eliminacion.agregarPartido(faseActual, partidoActual);
       partidoActual = null;
     }
@@ -81,13 +89,13 @@ function parseEliminacionSection(lineas) {
   return eliminacion;
 }
 
-function cargarDatosDesdeCSV(nombreArchivo) {
+function cargarDatosDesdeArchivo(nombreArchivo) {
   try {
     const rutaArchivo = path.join(__dirname, '../../Test', nombreArchivo);
     const contenido = fs.readFileSync(rutaArchivo, 'utf8');
     const lineas = contenido.split('\n').map(l => l.trim());
 
-    console.log(`🔄 Procesando archivo: ${nombreArchivo}`);
+    console.log(`🔄 Procesando archivo TXT: ${nombreArchivo}`);
 
     // Detectar secciones
     let seccionIndices = {};
@@ -123,7 +131,7 @@ function cargarDatosDesdeCSV(nombreArchivo) {
       equipos.forEach(equipo => liga.agregarEquipo(equipo));
     }
 
-    console.log('✅ Datos cargados exitosamente');
+    console.log('✅ Datos cargados exitosamente desde archivo TXT');
     console.log(`📊 Liga: ${liga ? liga.nombre : 'N/A'}`);
     console.log(`🏟️ Sede: ${liga ? liga.sede : 'N/A'}`);
     console.log(`⚽ Equipos: ${equipos.length}`);
@@ -132,7 +140,7 @@ function cargarDatosDesdeCSV(nombreArchivo) {
     return { liga, equipos, eliminacion };
 
   } catch (error) {
-    console.log('❌ Error al cargar el archivo:', error.message);
+    console.log('❌ Error al cargar el archivo TXT:', error.message);
     console.log('❌ Detalle del error:', error.stack);
     return null;
   }
@@ -177,7 +185,7 @@ function mostrarDatos(datos) {
 }
 
 module.exports = {
-  obtenerArchivosCSV,
-  cargarDatosDesdeCSV,
+  obtenerArchivosTXT,
+  cargarDatosDesdeArchivo,
   mostrarDatos
 };
