@@ -1,0 +1,59 @@
+TORNEO {
+    nombre: "Copa Mundial Universitaria",
+    equipos: 8,
+    sede: "Guatemala"
+  },
+EQUIPOS {
+      equipo: "Leones FC" [
+      jugador: "Pedro Martínez" [posicion: "PORTERO", Dorsal: 21, Edad: 22],
+      jugador: "Luis Gómez" [posicion: "DEFENSOR", Dorsal: 5, Edad: 23],
+    ],
+      equipo: "Cóndores FC" [
+      jugador: "Carlos Ruiz" [posicion: "DELANTERO", Dorsal: 9, Edad: 24],
+      jugador: "Miguel Ángel" [posicion: "MEDIOCAMPISTA", Dorsal: 8, Edad: 21],
+    ],
+},
+
+ELIMINACION {
+    cuartos: [
+      partido: "Leones FC vs Cóndores FC" [
+      resultado: "2-1",
+      goleadores: [
+        goleador: "Pedro Martínez" [equipo: "Leones FC", minuto: 45],
+        goleador: "Carlos Ruiz" [equipo: "Cóndores FC", minuto: 60],
+        goleador: "Luis Gómez" [equipo: "Leones FC", minuto: 75],
+      ],
+      partido: "Águilas FC vs Tigres FC" [
+      resultado: "1-3",
+      goleadores: [
+        goleador: "Juan Pérez" [equipo: "Águilas FC", minuto: 30],
+        goleador: "Miguel Ángel" [equipo: "Tigres FC", minuto: 50],
+        goleador: "Luis Gómez" [equipo: "Tigres FC", minuto: 70],
+        goleador: "Carlos Ruiz" [equipo: "Tigres FC", minuto: 85],
+      ],
+    ],
+    semifinales: [
+      partido: "Leones FC vs Tigres FC" [
+      resultado: "1-2",
+      goleadores: [
+        goleador: "Pedro Martínez" [equipo: "Leones FC", minuto: 40],
+        goleador: "Miguel Ángel" [equipo: "Tigres FC", minuto: 55],
+        goleador: "Carlos Ruiz" [equipo: "Tigres FC", minuto: 80],
+      ],
+      partido: "Águilas FC vs Halcones FC" [
+      resultado: "0-1",
+      goleadores: [
+        goleador: "Luis Gómez" [equipo: "Halcones FC", minuto: 65],
+      ],
+    ],
+    final: [
+      partido: "Tigres FC vs Halcones FC" [
+      resultado: "2-2 (4-3 penales)",
+      goleadores: [
+        goleador: "Miguel Ángel" [equipo: "Tigres FC", minuto: 25],
+        goleador: "Luis Gómez" [equipo: "Halcones FC", minuto: 55],
+        goleador: "Carlos Ruiz" [equipo: "Tigres FC", minuto: 75],
+        goleador: "Pedro Martínez" [equipo: "Halcones FC", minuto: 85],
+      ],
+    ];
+};
