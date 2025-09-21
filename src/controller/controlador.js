@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Liga, Equipo, Jugador, Eliminacion, Partido } = require('../model/modelo');
-const { LexicoSimple } = require('./Lexico'); // ← AGREGAR ESTA LÍNEA
+const { LexicoSimple } = require('./Lexico');
 
 function obtenerArchivosTXT(){
   try {
@@ -95,6 +95,16 @@ function cargarDatosDesdeArchivo(nombreArchivo) {
         console.log(`   - Equipos: ${liga.equipos.length}`);
         console.log(`   - Jugadores totales: ${liga.equipos.reduce((total, equipo) => total + equipo.jugadores.length, 0)}`);
         console.log(`   - Eliminatorias: ${eliminatorias.length}`);
+
+        // 5. ¡NUEVO! GENERAR REPORTE HTML
+        console.log('\n🎨 PASO 3: Generando Reporte HTML');
+        console.log('='.repeat(50));
+        
+        try {
+            console.log(`✅ Reporte HTML pendiente (GeneradorHTML no implementado aún)`);
+        } catch (error) {
+            console.error(`❌ Error al generar HTML: ${error.message}`);
+        }
 
         return { liga, eliminatorias };
 

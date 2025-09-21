@@ -1,0 +1,187 @@
+REPORTE DE ANÁLISIS LÉXICO SIMPLE
+==================================
+Fecha: 9/20/2025, 5:42:13 PM
+Archivo: lexico_entry2.txt
+
+TOKENS ENCONTRADOS
+==================
+No. | Texto         | Tipo             | Línea | Columna
+------------------------------------------------------------
+  1 | TORNEO        | Palabra Reservada |     1 |       1
+  2 | {             | Símbolo          |     1 |       8
+  3 | nombre        | Palabra Normal   |     2 |       3
+  4 | :             | Símbolo          |     2 |       9
+  5 | "Liga Nacional Relámpago" | Texto            |     2 |      11
+  6 | ,             | Símbolo          |     2 |      36
+  7 | :             | Símbolo          |     3 |      10
+  8 | 2             | Número           |     3 |      12
+  9 | ,             | Símbolo          |     3 |      13
+ 10 | sede          | Palabra Normal   |     4 |       3
+ 11 | :             | Símbolo          |     4 |       7
+ 12 | "Antigua Guatemala" | Texto            |     4 |       9
+ 13 | }             | Símbolo          |     5 |       1
+ 14 | EQUIPOS       | Palabra Reservada |     7 |       1
+ 15 | {             | Símbolo          |     7 |       9
+ 16 | equipo        | Palabra Normal   |     8 |       3
+ 17 | :             | Símbolo          |     8 |       9
+ 18 | "Toros FC"    | Texto            |     8 |      11
+ 19 | [             | Símbolo          |     8 |      22
+ 20 | jugador       | Palabra Normal   |     9 |       5
+ 21 | :             | Símbolo          |     9 |      12
+ 22 | "Juan Pérez"  | Texto            |     9 |      14
+ 23 | [             | Símbolo          |     9 |      27
+ 24 | posicion      | Palabra Normal   |     9 |      28
+ 25 | :             | Símbolo          |     9 |      36
+ 26 | "PORTERO"     | Texto            |     9 |      38
+ 27 | ,             | Símbolo          |     9 |      47
+ 28 | numero        | Palabra Normal   |     9 |      49
+ 29 | :             | Símbolo          |     9 |      55
+ 30 | 1             | Número           |     9 |      57
+ 31 | ,             | Símbolo          |     9 |      58
+ 32 | edad          | Palabra Normal   |     9 |      60
+ 33 | :             | Símbolo          |     9 |      64
+ 34 | 33            | Número           |     9 |      66
+ 35 | ]             | Símbolo          |     9 |      68
+ 36 | ,             | Símbolo          |     9 |      69
+ 37 | jugador       | Palabra Normal   |    10 |       5
+ 38 | :             | Símbolo          |    10 |      12
+ 39 | "Luis Gómez"  | Texto            |    10 |      14
+ 40 | [             | Símbolo          |    10 |      27
+ 41 | posicion      | Palabra Normal   |    10 |      28
+ 42 | :             | Símbolo          |    10 |      36
+ 43 | "DELANTERO"   | Texto            |    10 |      38
+ 44 | ,             | Símbolo          |    10 |      49
+ 45 | numero        | Palabra Normal   |    10 |      51
+ 46 | :             | Símbolo          |    10 |      57
+ 47 | 9             | Número           |    10 |      59
+ 48 | ,             | Símbolo          |    10 |      60
+ 49 | edad          | Palabra Normal   |    10 |      62
+ 50 | :             | Símbolo          |    10 |      66
+ 51 | 21            | Número           |    10 |      68
+ 52 | ]             | Símbolo          |    10 |      70
+ 53 | ]             | Símbolo          |    11 |       3
+ 54 | ,             | Símbolo          |    11 |       4
+ 55 | equipo        | Palabra Normal   |    12 |       3
+ 56 | :             | Símbolo          |    12 |       9
+ 57 | "Halcones Rojos" | Texto            |    12 |      11
+ 58 | [             | Símbolo          |    12 |      28
+ 59 | jugador       | Palabra Normal   |    13 |       5
+ 60 | :             | Símbolo          |    13 |      12
+ 61 | "Carlos Méndez" | Texto            |    13 |      14
+ 62 | [             | Símbolo          |    13 |      30
+ 63 | posicion      | Palabra Normal   |    13 |      31
+ 64 | :             | Símbolo          |    13 |      39
+ 65 | "DEFENSA"     | Texto            |    13 |      41
+ 66 | ,             | Símbolo          |    13 |      50
+ 67 | numero        | Palabra Normal   |    13 |      52
+ 68 | :             | Símbolo          |    13 |      58
+ 69 | 5             | Número           |    13 |      60
+ 70 | ,             | Símbolo          |    13 |      61
+ 71 | edad          | Palabra Normal   |    13 |      63
+ 72 | :             | Símbolo          |    13 |      67
+ 73 | 27            | Número           |    13 |      69
+ 74 | ]             | Símbolo          |    13 |      71
+ 75 | ,             | Símbolo          |    13 |      72
+ 76 | jugador       | Palabra Normal   |    14 |       5
+ 77 | :             | Símbolo          |    14 |      12
+ 78 | "Pedro López" | Texto            |    14 |      14
+ 79 | [             | Símbolo          |    14 |      28
+ 80 | posicion      | Palabra Normal   |    14 |      29
+ 81 | :             | Símbolo          |    14 |      37
+ 82 | "DELANTERO"   | Texto            |    14 |      39
+ 83 | ,             | Símbolo          |    14 |      50
+ 84 | numero        | Palabra Normal   |    14 |      52
+ 85 | :             | Símbolo          |    14 |      58
+ 86 | 10            | Número           |    14 |      60
+ 87 | ,             | Símbolo          |    14 |      62
+ 88 | edad          | Palabra Normal   |    14 |      64
+ 89 | :             | Símbolo          |    14 |      68
+ 90 | 24            | Número           |    14 |      70
+ 91 | ]             | Símbolo          |    14 |      72
+ 92 | ]             | Símbolo          |    15 |       3
+ 93 | }             | Símbolo          |    16 |       1
+ 94 | ELIMINACION   | Palabra Reservada |    18 |       1
+ 95 | {             | Símbolo          |    18 |      13
+ 96 | final         | Palabra Reservada |    19 |       3
+ 97 | :             | Símbolo          |    19 |       8
+ 98 | [             | Símbolo          |    19 |      10
+ 99 | partido       | Palabra Normal   |    20 |       5
+100 | :             | Símbolo          |    20 |      12
+101 | "Toros FC"    | Texto            |    20 |      14
+102 | "Halcones Rojos" | Texto            |    20 |      28
+103 | [             | Símbolo          |    20 |      45
+104 | resultado     | Palabra Normal   |    21 |       7
+105 | :             | Símbolo          |    21 |      16
+106 | "4-2"         | Texto            |    21 |      18
+107 | ,             | Símbolo          |    21 |      23
+108 | :             | Símbolo          |    22 |      17
+109 | [             | Símbolo          |    22 |      19
+110 | goleador      | Palabra Normal   |    23 |       9
+111 | :             | Símbolo          |    23 |      17
+112 | "Luis Gómez"  | Texto            |    23 |      19
+113 | [             | Símbolo          |    23 |      32
+114 | minuto        | Palabra Normal   |    23 |      33
+115 | :             | Símbolo          |    23 |      39
+116 | 5             | Número           |    23 |      41
+117 | ]             | Símbolo          |    23 |      42
+118 | ,             | Símbolo          |    23 |      43
+119 | goleador      | Palabra Normal   |    24 |       9
+120 | :             | Símbolo          |    24 |      17
+121 | "Luis Gómez"  | Texto            |    24 |      19
+122 | [             | Símbolo          |    24 |      32
+123 | minuto        | Palabra Normal   |    24 |      33
+124 | :             | Símbolo          |    24 |      39
+125 | 30            | Número           |    24 |      41
+126 | ]             | Símbolo          |    24 |      43
+127 | ,             | Símbolo          |    24 |      44
+128 | goleador      | Palabra Normal   |    25 |       9
+129 | :             | Símbolo          |    25 |      17
+130 | "Pedro López" | Texto            |    25 |      19
+131 | [             | Símbolo          |    25 |      33
+132 | minuto        | Palabra Normal   |    25 |      34
+133 | :             | Símbolo          |    25 |      40
+134 | 45            | Número           |    25 |      42
+135 | ]             | Símbolo          |    25 |      44
+136 | ,             | Símbolo          |    25 |      45
+137 | goleador      | Palabra Normal   |    26 |       9
+138 | :             | Símbolo          |    26 |      17
+139 | "Carlos Méndez" | Texto            |    26 |      19
+140 | [             | Símbolo          |    26 |      35
+141 | minuto        | Palabra Normal   |    26 |      36
+142 | :             | Símbolo          |    26 |      42
+143 | 60            | Número           |    26 |      44
+144 | ]             | Símbolo          |    26 |      46
+145 | ,             | Símbolo          |    26 |      47
+146 | goleador      | Palabra Normal   |    27 |       9
+147 | :             | Símbolo          |    27 |      17
+148 | "Luis Gómez"  | Texto            |    27 |      19
+149 | [             | Símbolo          |    27 |      32
+150 | minuto        | Palabra Normal   |    27 |      33
+151 | :             | Símbolo          |    27 |      39
+152 | 70            | Número           |    27 |      41
+153 | ]             | Símbolo          |    27 |      43
+154 | ,             | Símbolo          |    27 |      44
+155 | goleador      | Palabra Normal   |    28 |       9
+156 | :             | Símbolo          |    28 |      17
+157 | "Juan Pérez"  | Texto            |    28 |      19
+158 | [             | Símbolo          |    28 |      32
+159 | minuto        | Palabra Normal   |    28 |      33
+160 | :             | Símbolo          |    28 |      39
+161 | 89            | Número           |    28 |      41
+162 | ]             | Símbolo          |    28 |      43
+163 | ]             | Símbolo          |    29 |       7
+164 | ]             | Símbolo          |    30 |       5
+165 | ]             | Símbolo          |    31 |       3
+166 | }             | Símbolo          |    32 |       1
+
+Total de tokens: 166
+
+ERRORES ENCONTRADOS
+===================
+No. | Carácter | Problema        | Línea | Columna
+--------------------------------------------------
+  1 | equipos  | Palabra desconocida |     3 |      10
+  2 | vs       | Palabra desconocida |    20 |      27
+  3 | goleadores | Palabra desconocida |    22 |      17
+
+Total de errores: 3

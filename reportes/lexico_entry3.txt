@@ -1,0 +1,301 @@
+REPORTE DE ANÁLISIS LÉXICO SIMPLE
+==================================
+Fecha: 9/20/2025, 5:46:08 PM
+Archivo: lexico_entry3.txt
+
+TOKENS ENCONTRADOS
+==================
+No. | Texto         | Tipo             | Línea | Columna
+------------------------------------------------------------
+  1 | TORNEO        | Palabra Reservada |     1 |       1
+  2 | {             | Símbolo          |     1 |       8
+  3 | nombre        | Palabra Normal   |     2 |       3
+  4 | :             | Símbolo          |     2 |       9
+  5 | "Copa Internacional Estudiantil" | Texto            |     2 |      11
+  6 | ,             | Símbolo          |     2 |      43
+  7 | :             | Símbolo          |     3 |      10
+  8 | 8             | Número           |     3 |      12
+  9 | ,             | Símbolo          |     3 |      13
+ 10 | sede          | Palabra Normal   |     4 |       3
+ 11 | :             | Símbolo          |     4 |       7
+ 12 | "México"      | Texto            |     4 |       9
+ 13 | }             | Símbolo          |     5 |       1
+ 14 | EQUIPOS       | Palabra Reservada |     7 |       1
+ 15 | {             | Símbolo          |     7 |       9
+ 16 | equipo        | Palabra Normal   |     8 |       3
+ 17 | :             | Símbolo          |     8 |       9
+ 18 | "Guerreros"   | Texto            |     8 |      11
+ 19 | [             | Símbolo          |     8 |      23
+ 20 | jugador       | Palabra Normal   |     9 |       5
+ 21 | :             | Símbolo          |     9 |      12
+ 22 | "Mario Torres" | Texto            |     9 |      14
+ 23 | [             | Símbolo          |     9 |      29
+ 24 | posicion      | Palabra Normal   |     9 |      30
+ 25 | :             | Símbolo          |     9 |      38
+ 26 | "DELANTERO"   | Texto            |     9 |      40
+ 27 | ,             | Símbolo          |     9 |      51
+ 28 | numero        | Palabra Normal   |     9 |      53
+ 29 | :             | Símbolo          |     9 |      59
+ 30 | 11            | Número           |     9 |      61
+ 31 | ,             | Símbolo          |     9 |      63
+ 32 | edad          | Palabra Normal   |     9 |      65
+ 33 | :             | Símbolo          |     9 |      69
+ 34 | 23            | Número           |     9 |      71
+ 35 | ]             | Símbolo          |     9 |      73
+ 36 | ]             | Símbolo          |    10 |       3
+ 37 | ,             | Símbolo          |    10 |       4
+ 38 | equipo        | Palabra Normal   |    11 |       3
+ 39 | :             | Símbolo          |    11 |       9
+ 40 | "Titanes"     | Texto            |    11 |      11
+ 41 | [             | Símbolo          |    11 |      21
+ 42 | jugador       | Palabra Normal   |    12 |       5
+ 43 | :             | Símbolo          |    12 |      12
+ 44 | "Raúl Martínez" | Texto            |    12 |      14
+ 45 | [             | Símbolo          |    12 |      30
+ 46 | posicion      | Palabra Normal   |    12 |      31
+ 47 | :             | Símbolo          |    12 |      39
+ 48 | "PORTERO"     | Texto            |    12 |      41
+ 49 | ,             | Símbolo          |    12 |      50
+ 50 | numero        | Palabra Normal   |    12 |      52
+ 51 | :             | Símbolo          |    12 |      58
+ 52 | 1             | Número           |    12 |      60
+ 53 | ,             | Símbolo          |    12 |      61
+ 54 | edad          | Palabra Normal   |    12 |      63
+ 55 | :             | Símbolo          |    12 |      67
+ 56 | 28            | Número           |    12 |      69
+ 57 | ]             | Símbolo          |    12 |      71
+ 58 | ]             | Símbolo          |    13 |       3
+ 59 | ,             | Símbolo          |    13 |       4
+ 60 | equipo        | Palabra Normal   |    14 |       3
+ 61 | :             | Símbolo          |    14 |       9
+ 62 | "Estrellas"   | Texto            |    14 |      11
+ 63 | [             | Símbolo          |    14 |      23
+ 64 | jugador       | Palabra Normal   |    15 |       5
+ 65 | :             | Símbolo          |    15 |      12
+ 66 | "David Hernández" | Texto            |    15 |      14
+ 67 | [             | Símbolo          |    15 |      32
+ 68 | posicion      | Palabra Normal   |    15 |      33
+ 69 | :             | Símbolo          |    15 |      41
+ 70 | "DEFENSA"     | Texto            |    15 |      43
+ 71 | ,             | Símbolo          |    15 |      52
+ 72 | numero        | Palabra Normal   |    15 |      54
+ 73 | :             | Símbolo          |    15 |      60
+ 74 | 4             | Número           |    15 |      62
+ 75 | ,             | Símbolo          |    15 |      63
+ 76 | edad          | Palabra Normal   |    15 |      65
+ 77 | :             | Símbolo          |    15 |      69
+ 78 | 25            | Número           |    15 |      71
+ 79 | ]             | Símbolo          |    15 |      73
+ 80 | ]             | Símbolo          |    16 |       3
+ 81 | ,             | Símbolo          |    16 |       4
+ 82 | equipo        | Palabra Normal   |    17 |       3
+ 83 | :             | Símbolo          |    17 |       9
+ 84 | "Relámpagos"  | Texto            |    17 |      11
+ 85 | [             | Símbolo          |    17 |      24
+ 86 | jugador       | Palabra Normal   |    18 |       5
+ 87 | :             | Símbolo          |    18 |      12
+ 88 | "Sergio López" | Texto            |    18 |      14
+ 89 | [             | Símbolo          |    18 |      29
+ 90 | posicion      | Palabra Normal   |    18 |      30
+ 91 | :             | Símbolo          |    18 |      38
+ 92 | "MEDIOCAMPO"  | Texto            |    18 |      40
+ 93 | ,             | Símbolo          |    18 |      52
+ 94 | numero        | Palabra Normal   |    18 |      54
+ 95 | :             | Símbolo          |    18 |      60
+ 96 | 7             | Número           |    18 |      62
+ 97 | ,             | Símbolo          |    18 |      63
+ 98 | edad          | Palabra Normal   |    18 |      65
+ 99 | :             | Símbolo          |    18 |      69
+100 | 22            | Número           |    18 |      71
+101 | ]             | Símbolo          |    18 |      73
+102 | ]             | Símbolo          |    19 |       3
+103 | ,             | Símbolo          |    19 |       4
+104 | equipo        | Palabra Normal   |    20 |       3
+105 | :             | Símbolo          |    20 |       9
+106 | "Centauros"   | Texto            |    20 |      11
+107 | [             | Símbolo          |    20 |      23
+108 | jugador       | Palabra Normal   |    21 |       5
+109 | :             | Símbolo          |    21 |      12
+110 | "José Morales" | Texto            |    21 |      14
+111 | [             | Símbolo          |    21 |      29
+112 | posicion      | Palabra Normal   |    21 |      30
+113 | :             | Símbolo          |    21 |      38
+114 | "DELANTERO"   | Texto            |    21 |      40
+115 | ,             | Símbolo          |    21 |      51
+116 | numero        | Palabra Normal   |    21 |      53
+117 | :             | Símbolo          |    21 |      59
+118 | 9             | Número           |    21 |      61
+119 | ,             | Símbolo          |    21 |      62
+120 | edad          | Palabra Normal   |    21 |      64
+121 | :             | Símbolo          |    21 |      68
+122 | 30            | Número           |    21 |      70
+123 | ]             | Símbolo          |    21 |      72
+124 | ]             | Símbolo          |    22 |       3
+125 | ,             | Símbolo          |    22 |       4
+126 | equipo        | Palabra Normal   |    23 |       3
+127 | :             | Símbolo          |    23 |       9
+128 | "Pumas"       | Texto            |    23 |      11
+129 | [             | Símbolo          |    23 |      19
+130 | jugador       | Palabra Normal   |    24 |       5
+131 | :             | Símbolo          |    24 |      12
+132 | "Andrés Ruiz" | Texto            |    24 |      14
+133 | [             | Símbolo          |    24 |      28
+134 | posicion      | Palabra Normal   |    24 |      29
+135 | :             | Símbolo          |    24 |      37
+136 | "DEFENSA"     | Texto            |    24 |      39
+137 | ,             | Símbolo          |    24 |      48
+138 | numero        | Palabra Normal   |    24 |      50
+139 | :             | Símbolo          |    24 |      56
+140 | 6             | Número           |    24 |      58
+141 | ,             | Símbolo          |    24 |      59
+142 | edad          | Palabra Normal   |    24 |      61
+143 | :             | Símbolo          |    24 |      65
+144 | 21            | Número           |    24 |      67
+145 | ]             | Símbolo          |    24 |      69
+146 | ]             | Símbolo          |    25 |       3
+147 | ,             | Símbolo          |    25 |       4
+148 | equipo        | Palabra Normal   |    26 |       3
+149 | :             | Símbolo          |    26 |       9
+150 | "Águilas"     | Texto            |    26 |      11
+151 | [             | Símbolo          |    26 |      21
+152 | jugador       | Palabra Normal   |    27 |       5
+153 | :             | Símbolo          |    27 |      12
+154 | "Felipe Ramírez" | Texto            |    27 |      14
+155 | [             | Símbolo          |    27 |      31
+156 | posicion      | Palabra Normal   |    27 |      32
+157 | :             | Símbolo          |    27 |      40
+158 | "DELANTERO"   | Texto            |    27 |      42
+159 | ,             | Símbolo          |    27 |      53
+160 | numero        | Palabra Normal   |    27 |      55
+161 | :             | Símbolo          |    27 |      61
+162 | 10            | Número           |    27 |      63
+163 | ,             | Símbolo          |    27 |      65
+164 | edad          | Palabra Normal   |    27 |      67
+165 | :             | Símbolo          |    27 |      71
+166 | 24            | Número           |    27 |      73
+167 | ]             | Símbolo          |    27 |      75
+168 | ]             | Símbolo          |    28 |       3
+169 | ,             | Símbolo          |    28 |       4
+170 | equipo        | Palabra Normal   |    29 |       3
+171 | :             | Símbolo          |    29 |       9
+172 | "Lobos"       | Texto            |    29 |      11
+173 | [             | Símbolo          |    29 |      19
+174 | jugador       | Palabra Normal   |    30 |       5
+175 | :             | Símbolo          |    30 |      12
+176 | "Ricardo Díaz" | Texto            |    30 |      14
+177 | [             | Símbolo          |    30 |      29
+178 | posicion      | Palabra Normal   |    30 |      30
+179 | :             | Símbolo          |    30 |      38
+180 | "PORTERO"     | Texto            |    30 |      40
+181 | ,             | Símbolo          |    30 |      49
+182 | numero        | Palabra Normal   |    30 |      51
+183 | :             | Símbolo          |    30 |      57
+184 | 12            | Número           |    30 |      59
+185 | ,             | Símbolo          |    30 |      61
+186 | edad          | Palabra Normal   |    30 |      63
+187 | :             | Símbolo          |    30 |      67
+188 | 27            | Número           |    30 |      69
+189 | ]             | Símbolo          |    30 |      71
+190 | ]             | Símbolo          |    31 |       3
+191 | }             | Símbolo          |    32 |       1
+192 | ELIMINACION   | Palabra Reservada |    34 |       1
+193 | {             | Símbolo          |    34 |      13
+194 | cuartos       | Palabra Reservada |    35 |       3
+195 | :             | Símbolo          |    35 |      10
+196 | [             | Símbolo          |    35 |      12
+197 | partido       | Palabra Normal   |    36 |       5
+198 | :             | Símbolo          |    36 |      12
+199 | "Guerreros"   | Texto            |    36 |      14
+200 | "Titanes"     | Texto            |    36 |      29
+201 | [             | Símbolo          |    36 |      39
+202 | resultado     | Palabra Normal   |    36 |      40
+203 | :             | Símbolo          |    36 |      49
+204 | "1-0"         | Texto            |    36 |      51
+205 | ]             | Símbolo          |    36 |      56
+206 | ,             | Símbolo          |    36 |      57
+207 | partido       | Palabra Normal   |    37 |       5
+208 | :             | Símbolo          |    37 |      12
+209 | "Estrellas"   | Texto            |    37 |      14
+210 | "Relámpagos"  | Texto            |    37 |      29
+211 | [             | Símbolo          |    37 |      42
+212 | resultado     | Palabra Normal   |    37 |      43
+213 | :             | Símbolo          |    37 |      52
+214 | "2-2"         | Texto            |    37 |      54
+215 | ]             | Símbolo          |    37 |      59
+216 | ,             | Símbolo          |    37 |      60
+217 | partido       | Palabra Normal   |    38 |       5
+218 | :             | Símbolo          |    38 |      12
+219 | "Centauros"   | Texto            |    38 |      14
+220 | "Pumas"       | Texto            |    38 |      29
+221 | [             | Símbolo          |    38 |      37
+222 | resultado     | Palabra Normal   |    38 |      38
+223 | :             | Símbolo          |    38 |      47
+224 | "0-3"         | Texto            |    38 |      49
+225 | ]             | Símbolo          |    38 |      54
+226 | ,             | Símbolo          |    38 |      55
+227 | partido       | Palabra Normal   |    39 |       5
+228 | :             | Símbolo          |    39 |      12
+229 | "Águilas"     | Texto            |    39 |      14
+230 | "Lobos"       | Texto            |    39 |      27
+231 | [             | Símbolo          |    39 |      35
+232 | resultado     | Palabra Normal   |    39 |      36
+233 | :             | Símbolo          |    39 |      45
+234 | "3-1"         | Texto            |    39 |      47
+235 | ]             | Símbolo          |    39 |      52
+236 | ]             | Símbolo          |    40 |       3
+237 | ,             | Símbolo          |    40 |       4
+238 | :             | Símbolo          |    41 |      12
+239 | [             | Símbolo          |    41 |      14
+240 | partido       | Palabra Normal   |    42 |       5
+241 | :             | Símbolo          |    42 |      12
+242 | "Guerreros"   | Texto            |    42 |      14
+243 | "Estrellas"   | Texto            |    42 |      29
+244 | [             | Símbolo          |    42 |      41
+245 | resultado     | Palabra Normal   |    42 |      42
+246 | :             | Símbolo          |    42 |      51
+247 | "2-1"         | Texto            |    42 |      53
+248 | ]             | Símbolo          |    42 |      58
+249 | ,             | Símbolo          |    42 |      59
+250 | partido       | Palabra Normal   |    43 |       5
+251 | :             | Símbolo          |    43 |      12
+252 | "Pumas"       | Texto            |    43 |      14
+253 | "Águilas"     | Texto            |    43 |      25
+254 | [             | Símbolo          |    43 |      35
+255 | resultado     | Palabra Normal   |    43 |      36
+256 | :             | Símbolo          |    43 |      45
+257 | "1-1"         | Texto            |    43 |      47
+258 | ]             | Símbolo          |    43 |      52
+259 | ]             | Símbolo          |    44 |       3
+260 | ,             | Símbolo          |    44 |       4
+261 | final         | Palabra Reservada |    45 |       3
+262 | :             | Símbolo          |    45 |       8
+263 | [             | Símbolo          |    45 |      10
+264 | partido       | Palabra Normal   |    46 |       5
+265 | :             | Símbolo          |    46 |      12
+266 | "Guerreros"   | Texto            |    46 |      14
+267 | "Pumas"       | Texto            |    46 |      29
+268 | [             | Símbolo          |    46 |      37
+269 | resultado     | Palabra Normal   |    46 |      38
+270 | :             | Símbolo          |    46 |      47
+271 | "Pendiente"   | Texto            |    46 |      49
+272 | ]             | Símbolo          |    46 |      60
+273 | ]             | Símbolo          |    47 |       3
+274 | }             | Símbolo          |    48 |       1
+
+Total de tokens: 274
+
+ERRORES ENCONTRADOS
+===================
+No. | Carácter | Problema        | Línea | Columna
+--------------------------------------------------
+  1 | equipos  | Palabra desconocida |     3 |      10
+  2 | vs       | Palabra desconocida |    36 |      28
+  3 | vs       | Palabra desconocida |    37 |      28
+  4 | vs       | Palabra desconocida |    38 |      28
+  5 | vs       | Palabra desconocida |    39 |      26
+  6 | semifinal | Palabra desconocida |    41 |      12
+  7 | vs       | Palabra desconocida |    42 |      28
+  8 | vs       | Palabra desconocida |    43 |      24
+  9 | vs       | Palabra desconocida |    46 |      28
+
+Total de errores: 9
