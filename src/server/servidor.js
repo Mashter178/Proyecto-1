@@ -13,25 +13,18 @@ class Servidor {
         };
     }
 
-    // === INICIAR SERVIDOR ===
     iniciar() {
         return new Promise((resolve, reject) => {
             try {
-                // Crear servidor HTTP
                 this.servidor = http.createServer((request, response) => {
                     this.manejarConexion(request, response);
                 });
-
-                // Configurar eventos del servidor
                 this.configurarEventos();
-
-                // Iniciar en el puerto especificado
                 this.servidor.listen(this.puerto, () => {
                     this.estadisticas.iniciadoEn = new Date();
                     this.mostrarBanner();
                     resolve(this.puerto);
                 });
-
             } catch (error) {
                 console.error('❌ Error al iniciar servidor:', error);
                 reject(error);
@@ -39,29 +32,20 @@ class Servidor {
         });
     }
 
-    // === MANEJAR CADA CONEXIÓN HTTP ===
     manejarConexion(request, response) {
-        // Actualizar estadísticas
         this.estadisticas.solicitudesTotal++;
         this.estadisticas.ultimaSolicitud = new Date();
-
-        // Configurar headers de respuesta comunes
         this.configurarHeadersComunes(response);
-
-        // Log de la solicitud
         this.logSolicitud(request);
 
         try {
-            // Delegar al controlador web (patrón MVC)
             this.controlador.manejarSolicitud(request, response);
-            
         } catch (error) {
             console.error('❌ Error en servidor HTTP:', error);
             this.responderErrorServidor(response, error);
         }
     }
 
-    // === CONFIGURAR EVENTOS DEL SERVIDOR ===
     configurarEventos() {
         this.servidor.on('error', (error) => {
             if (error.code === 'EADDRINUSE') {
@@ -76,7 +60,6 @@ class Servidor {
             console.log('🔴 Servidor cerrado');
         });
 
-        // Manejar cierre graceful
         process.on('SIGINT', () => {
             console.log('\n🔄 Cerrando servidor...');
             this.detener();
@@ -88,30 +71,23 @@ class Servidor {
         });
     }
 
-    // === CONFIGURAR HEADERS COMUNES ===
     configurarHeadersComunes(response) {
-        // Headers de seguridad básicos
         response.setHeader('X-Powered-By', 'Node.js Custom Server');
         response.setHeader('X-Content-Type-Options', 'nosniff');
         response.setHeader('X-Frame-Options', 'DENY');
-        
-        // Permitir CORS para desarrollo local
         response.setHeader('Access-Control-Allow-Origin', '*');
         response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
         response.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     }
 
-    // === LOGGING DE SOLICITUDES ===
     logSolicitud(request) {
         const timestamp = new Date().toISOString();
         const metodo = request.method;
         const url = request.url;
         const ip = request.connection.remoteAddress || 'unknown';
-        
         console.log(`📥 [${timestamp}] ${metodo} ${url} - ${ip}`);
     }
 
-    // === RESPONDER ERROR DE SERVIDOR ===
     responderErrorServidor(response, error) {
         const errorResponse = {
             success: false,
@@ -129,7 +105,6 @@ class Servidor {
         }
     }
 
-    // === DETENER SERVIDOR ===
     detener() {
         return new Promise((resolve) => {
             if (this.servidor) {
@@ -143,7 +118,6 @@ class Servidor {
         });
     }
 
-    // === OBTENER ESTADÍSTICAS ===
     obtenerEstadisticas() {
         const tiempoActivo = this.estadisticas.iniciadoEn 
             ? Date.now() - this.estadisticas.iniciadoEn.getTime()
@@ -161,7 +135,6 @@ class Servidor {
         };
     }
 
-    // === MOSTRAR BANNER DE INICIO ===
     mostrarBanner() {
         console.log('\n' + '='.repeat(60));
         console.log('🚀 SERVIDOR WEB INICIADO CORRECTAMENTE');
@@ -177,7 +150,6 @@ class Servidor {
         console.log('='.repeat(60) + '\n');
     }
 
-    // === INFORMACIÓN DEL SERVIDOR ===
     obtenerInfo() {
         return {
             nombre: 'Servidor de Análisis de Torneos',
@@ -190,35 +162,28 @@ class Servidor {
     }
 }
 
-// === FUNCIÓN PARA INICIAR SERVIDOR ===
-async function iniciarServidor(puerto = 3000) {
+// Exportar para uso como módulo
+module.exports = { Servidor, iniciarServidor };
+
+// Ejecución directa
+if (require.main === module) {
+    const args = process.argv.slice(2);
+    const puertoArg = args.find(arg => arg.startsWith('--puerto='));
+    const puerto = puertoArg ? parseInt(puertoArg.split('=')[1]) : 3000;
+    iniciarServidor(puerto);
+}
+
+async function iniciarServidor(puerto = 3001) {
     console.log('🔄 Iniciando servidor...\n');
-    
     try {
         const servidor = new Servidor(puerto);
         await servidor.iniciar();
         return servidor;
-        
     } catch (error) {
         console.error('❌ No se pudo iniciar el servidor:', error.message);
-        
         if (error.code === 'EADDRINUSE') {
             console.log(`💡 Prueba con otro puerto: node servidor.js --puerto ${puerto + 1}`);
         }
-        
         process.exit(1);
     }
-}
-
-// === EXPORTAR PARA USO COMO MÓDULO ===
-module.exports = { Servidor, iniciarServidor };
-
-// === EJECUCIÓN DIRECTA ===
-if (require.main === module) {
-    // Si se ejecuta directamente: node servidor.js
-    const args = process.argv.slice(2);
-    const puertoArg = args.find(arg => arg.startsWith('--puerto='));
-    const puerto = puertoArg ? parseInt(puertoArg.split('=')[1]) : 3000;
-    
-    iniciarServidor(puerto);
 }

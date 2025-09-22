@@ -1,21 +1,21 @@
 class Liga {
-    constructor(nombre, sede,  Equipos = []) {
+    constructor(nombre, sede,  equipos = []) {
         this.nombre = nombre;
         this.sede = sede;
-        this.Equipos = Equipos;
+        this.equipos = equipos; // Cambiar a minúscula
     }
     agregarEquipo(equipo) {
-        this.Equipos.push(equipo);
+        this.equipos.push(equipo); // Cambiar a minúscula
     }
 }
 
 class Equipo {
-    constructor(nombre, Jugadores = []) {
+    constructor(nombre, jugadores = []) {
         this.nombre = nombre;
-        this.Jugadores = Jugadores;
+        this.jugadores = jugadores; // Cambiar a minúscula
     }
-    agregarJugador(jugadores) {
-        this.Jugadores.push(jugadores);
+    agregarJugador(jugador) {
+        this.jugadores.push(jugador); // Cambiar a minúscula y corregir parámetro
     }
 }
 
@@ -28,22 +28,33 @@ function Jugador(nombre, posicion, dorsal, edad) {
     };
 }
 
-//-----------------------------------------------------------------
-
 class Eliminacion {
     constructor() {
         this.diesiseisavos = [];
         this.octavos = [];
         this.cuartos = [];
         this.semifinales = [];
+        this.semifinal = []; // Agregar soporte para singular
         this.final = [];
     }
     agregarPartido(fase, partido) {
         if (this[fase]) {
             this[fase].push(partido);
         } else {
-            throw new Error('Fase no válida');
+            throw new Error(`Fase no válida: "${fase}". Fases válidas: diesiseisavos, octavos, cuartos, semifinales, semifinal, final`);
         }
+    }
+
+    // Getter para obtener todos los partidos
+    get partidos() {
+        return [
+            ...this.diesiseisavos,
+            ...this.octavos,
+            ...this.cuartos,
+            ...this.semifinales,
+            ...this.semifinal,
+            ...this.final
+        ];
     }
 }
 

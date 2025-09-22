@@ -1,9 +1,3 @@
-// ============================================
-// VISTA WEB - Solo generación de HTML/CSS/JS
-// ============================================
-// Responsabilidad única: Generar interfaz de usuario
-// No contiene lógica de negocio
-
 class VistaWeb {
     constructor() {
         this.titulo = '🏆 Analizador de Torneos';
@@ -482,7 +476,7 @@ class VistaWeb {
                 return;
             }
             
-            const urlReporte = '/reportes-html/' + ultimoProcesamiento.reporteHTML;
+            const urlReporte = '/reports/' + ultimoProcesamiento.reporteHTML;
             console.log('📊 Abriendo reporte:', urlReporte);
             
             // Abrir en nueva ventana

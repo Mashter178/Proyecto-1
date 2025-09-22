@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reporte Completo - Mega Copa Universitaria</title>
+        <style>
+                * { margin: 0; padding: 0; box-sizing: border-box; }
+                body { 
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+                        line-height: 1.6; 
+                        color: #333; 
+                        background: #f5f5f5; 
+                        padding: 20px; 
+                }
+                .container { 
+                        max-width: 1200px; 
+                        margin: 0 auto; 
+                        background: white; 
+                        padding: 30px; 
+                        border-radius: 10px; 
+                        box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+                }
+                .header { 
+                        text-align: center; 
+                        margin-bottom: 40px; 
+                        padding: 20px; 
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                        color: white; 
+                        border-radius: 10px; 
+                }
+                .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+                .section { 
+                        margin-bottom: 40px; 
+                        background: #fafafa; 
+                        padding: 25px; 
+                        border-radius: 8px; 
+                        border: 1px solid #e0e0e0; 
+                }
+                .section h2 { 
+                        color: #4a4a4a; 
+                        margin-bottom: 20px; 
+                        font-size: 1.8em; 
+                        border-bottom: 3px solid #667eea; 
+                        padding-bottom: 10px; 
+                }
+                .stats-grid { 
+                        display: grid; 
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+                        gap: 15px; 
+                        margin-bottom: 25px; 
+                }
+                .stat-card { 
+                        background: white; 
+                        padding: 20px; 
+                        border-radius: 8px; 
+                        text-align: center; 
+                        border: 1px solid #e0e0e0; 
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+                }
+                .stat-value { 
+                        font-size: 2.2em; 
+                        font-weight: bold; 
+                        color: #667eea; 
+                        display: block; 
+                }
+                .stat-label { 
+                        color: #666; 
+                        font-size: 0.9em; 
+                        margin-top: 5px; 
+                }
+                table { 
+                        width: 100%; 
+                        border-collapse: collapse; 
+                        margin-top: 20px; 
+                        background: white; 
+                        border-radius: 8px; 
+                        overflow: hidden; 
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+                }
+                th, td { 
+                        padding: 12px; 
+                        text-align: left; 
+                        border-bottom: 1px solid #ddd; 
+                }
+                th { 
+                        background: #667eea; 
+                        color: white; 
+                        font-weight: 600; 
+                }
+                tr:hover { background-color: #f8f9fa; }
+                .bracket { 
+                        display: flex; 
+                        justify-content: space-around; 
+                        align-items: center; 
+                        margin: 20px 0; 
+                        flex-wrap: wrap; 
+                }
+                .fase { 
+                        text-align: center; 
+                        margin: 10px; 
+                        min-width: 200px; 
+                }
+                .fase h4 { 
+                        background: #667eea; 
+                        color: white; 
+                        padding: 10px; 
+                        border-radius: 5px 5px 0 0; 
+                        margin: 0; 
+                }
+                .partidos-fase { 
+                        background: white; 
+                        border: 2px solid #667eea; 
+                        border-radius: 0 0 5px 5px; 
+                        padding: 15px; 
+                }
+                .partido-bracket { 
+                        margin: 8px 0; 
+                        padding: 8px; 
+                        background: #f8f9fa; 
+                        border-radius: 4px; 
+                        border-left: 4px solid #28a745; 
+                }
+                .equipo-ganador { 
+                        font-weight: bold; 
+                        color: #28a745; 
+                }
+                .equipos-grid { 
+                        display: grid; 
+                        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+                        gap: 20px; 
+                }
+                .equipo-card { 
+                        background: white; 
+                        padding: 20px; 
+                        border-radius: 8px; 
+                        border: 1px solid #e0e0e0; 
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+                }
+                .equipo-card h3 { 
+                        color: #667eea; 
+                        margin-bottom: 15px; 
+                        font-size: 1.3em; 
+                }
+                .badge { 
+                        display: inline-block; 
+                        padding: 4px 8px; 
+                        border-radius: 12px; 
+                        font-size: 0.8em; 
+                        font-weight: bold; 
+                        margin: 2px; 
+                }
+                .badge-success { background: #d4edda; color: #155724; }
+                .badge-danger { background: #f8d7da; color: #721c24; }
+                .badge-warning { background: #fff3cd; color: #856404; }
+                .goleador-top { 
+                        background: linear-gradient(45deg, #ffd700, #ffed4e); 
+                        border: 2px solid #ffd700; 
+                }
+                footer { 
+                        margin-top: 40px; 
+                        text-align: center; 
+                        color: #666; 
+                        border-top: 2px solid #e0e0e0; 
+                        padding-top: 20px; 
+                }
+                @media print { 
+                        body { background: white; padding: 0; }
+                        .container { box-shadow: none; }
+                        .section { break-inside: avoid; }
+                }
+                @media (max-width: 768px) {
+                        .bracket { flex-direction: column; }
+                        .stats-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+                }
+        </style>
+</head>
+<body>
+        <div class="container">
+                <div class="header">
+                        <h1>🏆 Mega Copa Universitaria</h1>
+                        <p><strong>📍 Sede:</strong> El Salvador</p>
+                        <p><strong>📅 Fecha del reporte:</strong> 21/9/2025</p>
+                </div>
+                <div class="section">
+                        <h2>📊 Resumen General del Torneo</h2>
+                        <div class="stats-grid">
+                                <div class="stat-card">
+                                        <span class="stat-value">4</span>
+                                        <div class="stat-label">Equipos Participantes</div>
+                                </div>
+                                <div class="stat-card">
+                                        <span class="stat-value">10</span>
+                                        <div class="stat-label">Total Jugadores</div>
+                                </div>
+                                <div class="stat-card">
+                                        <span class="stat-value">3</span>
+                                        <div class="stat-label">Partidos Jugados</div>
+                                </div>
+                                <div class="stat-card">
+                                        <span class="stat-value">8</span>
+                                        <div class="stat-label">Total de Goles</div>
+                                </div>
+                                <div class="stat-card">
+                                        <span class="stat-value">2.7</span>
+                                        <div class="stat-label">Promedio Goles/Partido</div>
+                                </div>
+                                <div class="stat-card">
+                                        <span class="stat-value">25</span>
+                                        <div class="stat-label">Edad Promedio</div>
+                                </div>
+                        </div>
+                </div>
+                <div class="section">
+                        <h2>📈 Estadísticas Completas del Torneo</h2>
+                        <table style="margin-bottom: 20px;">
+                                <thead>
+                                        <tr>
+                                                <th style="background: #667eea; color: white;">Estadística</th>
+                                                <th style="background: #667eea; color: white;">Valor</th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <td><strong>Nombre del Torneo</strong></td>
+                                                <td>Mega Copa Universitaria</td>
+                                        </tr>
+                                        <tr>
+                                                <td><strong>Sede</strong></td>
+                                                <td>El Salvador</td>
+                                        </tr>
+                                        <tr>
+                                                <td><strong>Equipos Participantes</strong></td>
+                                                <td>4</td>
+                                        </tr>
+                                        <tr>
+                                                <td><strong>Total de Partidos Programados</strong></td>
+                                                <td>3</td>
+                                        </tr>
+                                        <tr>
+                                                <td><strong>Partidos Completados</strong></td>
+                                                <td>2</td>
+                                        </tr>
+                                        <tr>
+                                                <td><strong>Total de Goles</strong></td>
+                                                <td>8</td>
+                                        </tr>
+                                        <tr>
+                                                <td><strong>Promedio de Goles por Partido</strong></td>
+                                                <td>2.7</td>
+                                        </tr>
+                                        <tr>
+                                                <td><strong>Edad Promedio de Jugadores</strong></td>
+                                                <td>25 años</td>
+                                        </tr>
+                                        <tr>
+                                                <td><strong>Fase Actual</strong></td>
+                                                <td>Cuartos de Final</td>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+                <div class="section">
+                        <h2>🏟️ Bracket de Eliminación</h2>
+                        <div class="bracket">
+                <div class="fase">
+                    <h4>Cuartos</h4>
+                    <div class="partidos-fase">
+            
+                    <div class="partido-bracket">
+                        <div class="">Leones Dorados 2</div>
+                        <div style="text-align: center; color: #666; margin: 2px 0;">vs</div>
+                        <div class="">Tiburones Azules 2</div>
+                        
+                    </div>
+                
+                    <div class="partido-bracket">
+                        <div class="equipo-ganador">Águilas Negras 3</div>
+                        <div style="text-align: center; color: #666; margin: 2px 0;">vs</div>
+                        <div class="">Pumas Blancos 1</div>
+                        
+                    </div>
+                </div></div>
+                <div class="fase">
+                    <h4>Semifinal</h4>
+                    <div class="partidos-fase">
+            
+                    <div class="partido-bracket">
+                        <div class="">Leones Dorados 0</div>
+                        <div style="text-align: center; color: #666; margin: 2px 0;">vs</div>
+                        <div class="">Águilas Negras 0</div>
+                        
+                    </div>
+                </div></div></div>
+                </div>
+                <div class="section">
+                        <h2>📈 Estadísticas por Equipo</h2>
+                        
+        <table>
+            <thead>
+                <tr>
+                    <th>Equipo</th>
+                    <th>Partidos</th>
+                    <th>Ganados</th>
+                    <th>Perdidos</th>
+                    <th>Goles a Favor</th>
+                    <th>Goles en Contra</th>
+                    <th>Diferencia</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td><strong>Leones Dorados</strong></td>
+                <td>2</td>
+                <td><span class="badge badge-success">0</span></td>
+                <td><span class="badge badge-danger">1</span></td>
+                <td>2</td>
+                <td>2</td>
+                <td style="color: #28a745">
+                    +0
+                </td>
+                <td>
+                    <span class="badge badge-danger">
+                        Eliminado
+                    </span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td><strong>Tiburones Azules</strong></td>
+                <td>1</td>
+                <td><span class="badge badge-success">0</span></td>
+                <td><span class="badge badge-danger">1</span></td>
+                <td>2</td>
+                <td>2</td>
+                <td style="color: #28a745">
+                    +0
+                </td>
+                <td>
+                    <span class="badge badge-danger">
+                        Eliminado
+                    </span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td><strong>Águilas Negras</strong></td>
+                <td>2</td>
+                <td><span class="badge badge-success">1</span></td>
+                <td><span class="badge badge-danger">0</span></td>
+                <td>3</td>
+                <td>1</td>
+                <td style="color: #28a745">
+                    +2
+                </td>
+                <td>
+                    <span class="badge badge-success">
+                        Semifinal
+                    </span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td><strong>Pumas Blancos</strong></td>
+                <td>1</td>
+                <td><span class="badge badge-success">0</span></td>
+                <td><span class="badge badge-danger">1</span></td>
+                <td>1</td>
+                <td>3</td>
+                <td style="color: #dc3545">
+                    -2
+                </td>
+                <td>
+                    <span class="badge badge-danger">
+                        Eliminado
+                    </span>
+                </td>
+            </tr>
+        </tbody></table>
+                </div>
+                <div class="section">
+                        <h2>⚽ Tabla de Goleadores</h2>
+                        
+        <table>
+            <thead>
+                <tr>
+                    <th>Posición</th>
+                    <th>Jugador</th>
+                    <th>Goles</th>
+                    <th>Partidos</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr class="goleador-top">
+                <td>
+                    <strong>1°</strong>
+                     🥇
+                </td>
+                <td><strong>Cristian Morales</strong></td>
+                <td>
+                    <span class="badge badge-success" style="font-size: 1.1em;">
+                        ⚽ 1
+                    </span>
+                </td>
+                <td>
+                    <details>
+                        <summary style="cursor: pointer;">1 partido(s)</summary>
+                        <div style="margin-top: 5px;">
+                            <div style="font-size: 0.9em; color: #666; margin: 2px 0;">
+                                    Leones Dorados vs Tiburones Azules (min 12)
+                                </div>
+                        </div>
+                    </details>
+                </td>
+            </tr>
+        
+            <tr class="">
+                <td>
+                    <strong>2°</strong>
+                     🥈
+                </td>
+                <td><strong>Javier Gómez</strong></td>
+                <td>
+                    <span class="badge badge-success" style="font-size: 1.1em;">
+                        ⚽ 1
+                    </span>
+                </td>
+                <td>
+                    <details>
+                        <summary style="cursor: pointer;">1 partido(s)</summary>
+                        <div style="margin-top: 5px;">
+                            <div style="font-size: 0.9em; color: #666; margin: 2px 0;">
+                                    Águilas Negras vs Pumas Blancos (min 15)
+                                </div>
+                        </div>
+                    </details>
+                </td>
+            </tr>
+        </tbody></table>
+                </div>
+                <div class="section">
+                        <h2>👥 Equipos Participantes</h2>
+                        <div class="equipos-grid">
+                                
+                                        <div class="equipo-card">
+                                                <h3>Leones Dorados</h3>
+                                                <p><strong>Jugadores:</strong> 4</p>
+                                                <p><strong>Edad Promedio:</strong> 25 años</p>
+                                                <details style="margin-top: 10px;">
+                                                        <summary style="cursor: pointer; font-weight: bold;">👥 Ver plantilla completa</summary>
+                                                        <div style="margin-top: 10px;">
+                                                                
+                                                                        <div style="padding: 5px; border-bottom: 1px solid #eee;">
+                                                                                <strong>Daniel Pérez</strong> 
+                                                                                <span class="badge badge-warning">#9</span>
+                                                                                <span class="badge badge-info" style="background: #d1ecf1; color: #0c5460;">DELANTERO</span>
+                                                                                <span style="color: #666;">(23 años)</span>
+                                                                        </div>
+                                                                
+                                                                        <div style="padding: 5px; border-bottom: 1px solid #eee;">
+                                                                                <strong>Roberto López</strong> 
+                                                                                <span class="badge badge-warning">#8</span>
+                                                                                <span class="badge badge-info" style="background: #d1ecf1; color: #0c5460;">MEDIOCAMPO</span>
+                                                                                <span style="color: #666;">(22 años)</span>
+                                                                        </div>
+                                                                
+                                                                        <div style="padding: 5px; border-bottom: 1px solid #eee;">
+                                                                                <strong>Santiago Ramírez</strong> 
+                                                                                <span class="badge badge-warning">#4</span>
+                                                                                <span class="badge badge-info" style="background: #d1ecf1; color: #0c5460;">DEFENSA</span>
+                                                                                <span style="color: #666;">(25 años)</span>
+                                                                        </div>
+                                                                
+                                                                        <div style="padding: 5px; border-bottom: 1px solid #eee;">
+                                                                                <strong>Manuel Torres</strong> 
+                                                                                <span class="badge badge-warning">#1</span>
+                                                                                <span class="badge badge-info" style="background: #d1ecf1; color: #0c5460;">PORTERO</span>
+                                                                                <span style="color: #666;">(29 años)</span>
+                                                                        </div>
+                                                                
+                                                        </div>
+                                                </details>
+                                        </div>
+                                
+                                        <div class="equipo-card">
+                                                <h3>Tiburones Azules</h3>
+                                                <p><strong>Jugadores:</strong> 2</p>
+                                                <p><strong>Edad Promedio:</strong> 27 años</p>
+                                                <details style="margin-top: 10px;">
+                                                        <summary style="cursor: pointer; font-weight: bold;">👥 Ver plantilla completa</summary>
+                                                        <div style="margin-top: 10px;">
+                                                                
+                                                                        <div style="padding: 5px; border-bottom: 1px solid #eee;">
+                                                                                <strong>Cristian Morales</strong> 
+                                                                                <span class="badge badge-warning">#11</span>
+                                                                                <span class="badge badge-info" style="background: #d1ecf1; color: #0c5460;">DELANTERO</span>
+                                                                                <span style="color: #666;">(26 años)</span>
+                                                                        </div>
+                                                                
+                                                                        <div style="padding: 5px; border-bottom: 1px solid #eee;">
+                                                                                <strong>Alejandro Ruiz</strong> 
+                                                                                <span class="badge badge-warning">#3</span>
+                                                                                <span class="badge badge-info" style="background: #d1ecf1; color: #0c5460;">DEFENSA</span>
+                                                                                <span style="color: #666;">(28 años)</span>
+                                                                        </div>
+                                                                
+                                                        </div>
+                                                </details>
+                                        </div>
+                                
+                                        <div class="equipo-card">
+                                                <h3>Águilas Negras</h3>
+                                                <p><strong>Jugadores:</strong> 2</p>
+                                                <p><strong>Edad Promedio:</strong> 26 años</p>
+                                                <details style="margin-top: 10px;">
+                                                        <summary style="cursor: pointer; font-weight: bold;">👥 Ver plantilla completa</summary>
+                                                        <div style="margin-top: 10px;">
+                                                                
+                                                                        <div style="padding: 5px; border-bottom: 1px solid #eee;">
+                                                                                <strong>Javier Gómez</strong> 
+                                                                                <span class="badge badge-warning">#7</span>
+                                                                                <span class="badge badge-info" style="background: #d1ecf1; color: #0c5460;">DELANTERO</span>
+                                                                                <span style="color: #666;">(24 años)</span>
+                                                                        </div>
+                                                                
+                                                                        <div style="padding: 5px; border-bottom: 1px solid #eee;">
+                                                                                <strong>Felipe Díaz</strong> 
+                                                                                <span class="badge badge-warning">#12</span>
+                                                                                <span class="badge badge-info" style="background: #d1ecf1; color: #0c5460;">PORTERO</span>
+                                                                                <span style="color: #666;">(27 años)</span>
+                                                                        </div>
+                                                                
+                                                        </div>
+                                                </details>
+                                        </div>
+                                
+                                        <div class="equipo-card">
+                                                <h3>Pumas Blancos</h3>
+                                                <p><strong>Jugadores:</strong> 2</p>
+                                                <p><strong>Edad Promedio:</strong> 21 años</p>
+                                                <details style="margin-top: 10px;">
+                                                        <summary style="cursor: pointer; font-weight: bold;">👥 Ver plantilla completa</summary>
+                                                        <div style="margin-top: 10px;">
+                                                                
+                                                                        <div style="padding: 5px; border-bottom: 1px solid #eee;">
+                                                                                <strong>Oscar Hernández</strong> 
+                                                                                <span class="badge badge-warning">#10</span>
+                                                                                <span class="badge badge-info" style="background: #d1ecf1; color: #0c5460;">DELANTERO</span>
+                                                                                <span style="color: #666;">(20 años)</span>
+                                                                        </div>
+                                                                
+                                                                        <div style="padding: 5px; border-bottom: 1px solid #eee;">
+                                                                                <strong>Luis Ramírez</strong> 
+                                                                                <span class="badge badge-warning">#6</span>
+                                                                                <span class="badge badge-info" style="background: #d1ecf1; color: #0c5460;">MEDIOCAMPO</span>
+                                                                                <span style="color: #666;">(22 años)</span>
+                                                                        </div>
+                                                                
+                                                        </div>
+                                                </details>
+                                        </div>
+                                
+                        </div>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 10px; margin: 30px 0; border: 2px solid #9C27B0; text-align: center;">
+                        <h2 style="color: #9C27B0; margin-bottom: 20px;">🏆 Bracket del Torneo</h2>
+                        <div style="overflow-x: auto; max-width: 100%;">
+                                <?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" style="background: #F5F5F5;">
+    <defs>
+        <style>
+            .titulo { 
+                font-family: 'Arial Black', Arial, sans-serif; 
+                font-size: 20px; 
+                font-weight: bold; 
+                text-anchor: middle; 
+                fill: white;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            }
+            .fase { 
+                font-family: Arial, sans-serif; 
+                font-size: 16px; 
+                font-weight: bold; 
+                text-anchor: middle; 
+                fill: #333;
+            }
+            .equipo { 
+                font-family: Arial, sans-serif; 
+                font-size: 11px; 
+                text-anchor: middle; 
+                font-weight: bold;
+                fill: white;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            }
+            .resultado { 
+                font-family: Arial, sans-serif; 
+                font-size: 12px; 
+                text-anchor: middle; 
+                font-weight: bold;
+                fill: white;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            }
+            .caja { 
+                stroke: #333; 
+                stroke-width: 2; 
+                fill-opacity: 0.9;
+                filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.2));
+            }
+            .linea { 
+                stroke: #333; 
+                stroke-width: 3; 
+                fill: none;
+                opacity: 0.7;
+            }
+        </style>
+        <linearGradient id="tituloGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#FF6F00;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#FF8F00;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="finalGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#9C27B0;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#E91E63;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    <ellipse cx="400" cy="50" rx="250" ry="35" fill="url(#tituloGradient)" class="caja"/>
+    <text x="400" y="58" class="titulo">Mega Copa Universitaria</text>
+    <rect x="50" y="110" width="700" height="140" 
+          fill="#f0f0f0" stroke="#ccc" stroke-width="1" rx="10"/>
+    <text x="400" y="130" class="fase">Cuartos de Final</text>
+    <rect x="230" y="160" width="140" height="65" 
+          fill="#fff" class="caja" rx="5"/>
+    <rect x="233" y="163" width="134" height="22" 
+          fill="#F44336" stroke="none" rx="3"/>
+    <text x="300" y="177" class="equipo">Leones Dorados</text>
+    <text x="360" y="177" class="resultado" font-weight="bold">2</text>
+    <rect x="233" y="192" width="134" height="22" 
+          fill="#F44336" stroke="none" rx="3"/>
+    <text x="300" y="206" class="equipo">Tiburones Az...</text>
+    <text x="360" y="206" class="resultado" font-weight="bold">2</text>
+    <path d="M 300 225 L 300 255 L 400 255 L 400 360" 
+          class="linea" marker-end="url(#arrow)"/>
+    <text x="310" y="245" class="resultado" fill="#666">Ganador</text>
+    <rect x="430" y="160" width="140" height="65" 
+          fill="#fff" class="caja" rx="5"/>
+    <rect x="433" y="163" width="134" height="22" 
+          fill="#4CAF50" stroke="none" rx="3"/>
+    <text x="500" y="177" class="equipo">Águilas Negras</text>
+    <text x="560" y="177" class="resultado" font-weight="bold">3</text>
+    <rect x="433" y="192" width="134" height="22" 
+          fill="#F44336" stroke="none" rx="3"/>
+    <text x="500" y="206" class="equipo">Pumas Blancos</text>
+    <text x="560" y="206" class="resultado" font-weight="bold">1</text>
+    <path d="M 500 225 L 500 255 L 400 255 L 400 360" 
+          class="linea" marker-end="url(#arrow)"/>
+    <text x="510" y="245" class="resultado" fill="#666">Ganador</text>
+    <path d="M 300 225 L 300 255 L 400 255 L 400 360" 
+          class="linea" marker-end="url(#arrow)"/>
+    <text x="310" y="245" class="resultado" fill="#666">Ganador</text>
+    <path d="M 500 225 L 500 255 L 400 255 L 400 360" 
+          class="linea" marker-end="url(#arrow)"/>
+    <text x="510" y="245" class="resultado" fill="#666">Ganador</text>
+    <rect x="50" y="310" width="700" height="140" 
+          fill="#f0f0f0" stroke="#ccc" stroke-width="1" rx="10"/>
+    <text x="400" y="330" class="fase">Semifinal</text>
+    <rect x="330" y="360" width="140" height="65" 
+          fill="#fff" class="caja" rx="5"/>
+    <rect x="333" y="363" width="134" height="22" 
+          fill="#FFC107" stroke="none" rx="3"/>
+    <text x="400" y="377" class="equipo">Leones Dorados</text>
+    <text x="460" y="377" class="resultado" font-weight="bold">-</text>
+    <rect x="333" y="392" width="134" height="22" 
+          fill="#FFC107" stroke="none" rx="3"/>
+    <text x="400" y="406" class="equipo">Águilas Negras</text>
+    <text x="460" y="406" class="resultado" font-weight="bold">-</text>
+    <text x="400" y="418" class="resultado" fill="#666" style="font-style: italic;">Pendiente</text>
+    <path d="M 400 425 L 400 455 L 400 455 L 400 560" 
+          class="linea" marker-end="url(#arrow)"/>
+    <text x="410" y="445" class="resultado" fill="#666">Ganador</text></svg>
+                        </div>
+                </div>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 30px 0; border: 2px solid #007bff;">
+                        <h2 style="color: #007bff; margin-bottom: 15px;">📊 Análisis Léxico</h2>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
+                                <a href="/reports/tokens_entry5.html" 
+                                     style="display: block; padding: 15px; background: #007bff; color: white; text-decoration: none; border-radius: 8px; text-align: center; font-weight: bold; transition: background 0.3s ease;">
+                                        🔍 Ver Análisis de Tokens
+                                </a>
+                                <a href="/reports/errores_entry5.html" 
+                                     style="display: block; padding: 15px; background: #dc3545; color: white; text-decoration: none; border-radius: 8px; text-align: center; font-weight: bold; transition: background 0.3s ease;">
+                                        ❌ Ver Errores Léxicos
+                                </a>
+                        </div>
+                        <p style="text-align: center; margin-top: 15px; color: #6c757d; font-size: 0.9em;">
+                                Haz clic en los enlaces para ver reportes detallados del análisis léxico
+                        </p>
+                </div>
+                <footer>
+                        <p><strong>Reporte Completo del Torneo</strong></p>
+                        <p>Gestión de Torneos</p>
+                </footer>
+        </div>
+</body>
+</html>
